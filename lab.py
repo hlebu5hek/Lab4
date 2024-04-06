@@ -19,12 +19,12 @@ F, то вычисляется выражение: A-1*AT – K * F-1, инач�
 '''
 from random import randint as rnd
 import numpy as np
-import matplotlib as mpl
+import matplotlib.pyplot as plt
 
 def printList(z):
     for i in z:
         for j in i:
-            print("{:4}".format(j), end=' ')
+            print("{:6}".format(round(j, 2)), end=' ')
         print()
     print()
 
@@ -128,7 +128,7 @@ else: #(AТ +G-FТ)*K
     printList(list(a_arr_tr))
 
     f_arr_tr = np.array(f)
-    f_arr_tr.transpose()
+    f_arr_tr = f_arr_tr.transpose()
     print("FT : ")
     printList(list(f_arr_tr))
 
@@ -142,4 +142,29 @@ else: #(AТ +G-FТ)*K
     print("(AТ + G - FТ) * K : ")
     printList(list(out_))
 
+plt.title("Зависимости: y =sin от элементов F, x = соs от элементов F")
+plt.xlabel("x")
+plt.ylabel("y")
+plt.grid()
+plt.plot(np.cos(f),np.sin(f),linestyle="--",color="r")
 
+
+
+plt.show()
+
+
+plt.title("Высота столбца от числа элемента первой строки")
+plt.xlabel("x")
+plt.ylabel("y")
+plt.grid()
+plt.bar(range(0,n),f[0],color='r',alpha=0.9)
+
+plt.show()
+
+plt.title("соответсвие номера и квадрата элемента из первой строки ")
+plt.xlabel("x")
+plt.ylabel("y")
+plt.grid()
+plt.plot(range(0,n),f[0],linestyle="-",color="g")
+
+plt.show()
